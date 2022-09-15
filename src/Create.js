@@ -2,14 +2,14 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const Create = () => {
+const Create = (props) => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("mario");
   const [isPending, setIsPending] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
     const blog = { title, body, author };
     setIsPending(true);
@@ -29,7 +29,7 @@ const Create = () => {
   return (
     <div className="create">
       <h2>Create new blog</h2>
-      <form onSubmit={() => handleSubmit(props.id)}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <label>Blog Title:</label>
         <input
           type="text"
